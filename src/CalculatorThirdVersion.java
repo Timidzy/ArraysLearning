@@ -3,44 +3,64 @@ import java.util.Scanner;
 public class CalculatorThirdVersion {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        reportHelloMessage(scanner);
-        int execution = scanner.nextInt();
-        askForFirstNum(scanner);
-        int firstNum = scanner.nextInt();
-        askForSecondNum(scanner);
-        int secondNum = scanner.nextInt();
-        int result;
-        if (execution == 1) {
-            result = firstNum + secondNum;
-            System.out.println(result);
-        }else if (execution == 2){
-            result = firstNum - secondNum;
-            System.out.println(result);
-        }else if (execution == 3){
-            result = firstNum * secondNum;
-            System.out.println(result);
-        }else if (execution == 4){
-            result = firstNum / secondNum;
-            System.out.println(result);
-        }else System.out.println("Error !");
-
-
-
+        int execution = reportHelloMessage(scanner);
+        int firstNum = askForFirstNum(scanner);
+        int secondNum = askForSecondNum(scanner);
+        calculateResult(execution, firstNum, secondNum);
     }
 
-    static void reportHelloMessage(Scanner scanner) {
+    static int reportHelloMessage(Scanner scanner) {
         String helloMessage = "Hello!\nChoose operation u want to execute:\n1 - addition\n2 - subtraction" +
                 "\n3 - multiply\n4 - division";
         System.out.println(helloMessage);
+        int execution = scanner.nextInt();
+        return (execution);
     }
 
-    static void askForFirstNum(Scanner scanner) {
+    static int askForFirstNum(Scanner scanner) {
         String enterFirstNum = "Please, enter ur first number:";
         System.out.println(enterFirstNum);
+        int firstNum = scanner.nextInt();
+        return (firstNum);
     }
 
-    static void askForSecondNum(Scanner scanner) {
+    static int askForSecondNum(Scanner scanner) {
         String enterSecondNum = "Please, enter ur second number:";
         System.out.println(enterSecondNum);
+        int secondNum = scanner.nextInt();
+        return (secondNum);
+    }
+
+    static void calculateResult(int execution, int firstNum, int secondNum) {
+        int result;
+        if (execution == 1) {
+           result = addTwoNumbers(firstNum, secondNum);
+            System.out.println(result);
+        } else if (execution == 2) {
+            result = differTwoNumbers(firstNum, secondNum);
+            System.out.println(result);
+        } else if (execution == 3) {
+           result = multiTwoNumbers(firstNum, secondNum);
+            System.out.println(result);
+        } else if (execution == 4) {
+            result = divideTwoNumbers(firstNum, secondNum);
+            System.out.println(result);
+        }
+    }
+
+    static int addTwoNumbers(int firstNum, int secondNum) {
+        return (firstNum + secondNum);
+    }
+
+    static int differTwoNumbers(int firstNum, int secondNum) {
+        return (firstNum - secondNum);
+    }
+
+    static int multiTwoNumbers(int firstNum, int secondNum) {
+        return (firstNum * secondNum);
+    }
+
+    static int divideTwoNumbers(int firstNum, int secondNum) {
+        return (firstNum / secondNum);
     }
 }
